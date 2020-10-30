@@ -6,11 +6,19 @@
 </template>
 
 <script>
+import ConfettiGenerator from "confetti-js";
+let confetti;
 export default {
   methods: {
     newGame() {
+      confetti.clear();
       this.$emit('activeComponentEvent', 'GameCards');
     }
+  },
+  created() {
+    const confettiSettings = { target: 'my-canvas' };
+    confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
   }
 }
 </script>

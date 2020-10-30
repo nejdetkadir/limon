@@ -1,5 +1,8 @@
 <template>
-  <component :is="activeComponent" @activeComponentEvent="activeComponent = $event"></component>
+  <transition-group enter-active-class="animate__animated animate__slideInRight">
+    <component :is="activeComponent" @activeComponentEvent="activeComponent = $event" key="mainComponent"></component>
+    <canvas id="my-canvas" key="canvas" v-show="activeComponent === 'Celebrate'"></canvas>
+  </transition-group>
 </template>
 
 <script>
