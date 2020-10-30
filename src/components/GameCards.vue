@@ -3,10 +3,15 @@
     <h1 class="title">Where is the <span>Limon</span><strong>?</strong></h1>
     <h4 class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
     <div class="container">
-      <card v-for="card in cards" :key="card.id" :card="card"></card>
+      <transition-group class="card-container" enter-active-class="animate__animated animate__flip" appear>
+        <card @click.native="selectedCard = card.id" v-for="card in cards" :key="card.id" :card="card" :class="{'shadow' : selectedCard == card.id}"></card>
+      </transition-group>
+
     </div>
     <div class="container">
-      <default-card></default-card>
+      <transition mode="out-in" leave-active-class="animate__animated animate__flipInY">
+        <component :is="activeCard" @click.native="showCard(answer)" :card="answer"></component>
+      </transition>
     </div>
   </div>
 </template>
@@ -22,28 +27,41 @@
     },
     data: () => {
       return{
+        activeCard: 'DefaultCard',
+        answer: {},
+        selectedCard: null,
         cards: [
           {
             id: 1,
-            component: "app-cards",
+            component: "card",
             img: require('../assets/1.jpg')
           },
           {
             id: 2,
-            component: "app-cards",
+            component: "card",
             img: require('../assets/2.jpg')
           },
           {
             id: 3,
-            component: "app-cards",
+            component: "card",
             img: require('../assets/3.jpg')
           },
           {
             id: 4,
-            component: "app-cards",
+            component: "card",
             img: require('../assets/4.jpg')
           }
         ]
+      }
+    },
+    created() {
+      let answer = Math.floor(Math.random() * this.cards.length);
+      this.answer = this.cards[answer];
+      console.log(this.answer.id + ': id')
+    },
+    methods: {
+      showCard(a) {
+        this.activeCard = a.component;
       }
     }
   }
@@ -70,5 +88,14 @@
     align-items: center;
     margin-top: 50px;
   }
-
+  .card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .shadow{
+    box-shadow: 0px 5px 48px #30969f !important;
+    transition: box-shadow .5s;
+  }
 </style>
