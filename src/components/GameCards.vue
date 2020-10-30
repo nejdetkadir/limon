@@ -61,7 +61,19 @@
     },
     methods: {
       showCard(a) {
-        this.activeCard = a.component;
+        if (this.selectedCard) {
+          this.activeCard = a.component;
+          setTimeout(() => {
+            if (a.id === this.selectedCard) {
+              this.$emit('isCorrectEvent', 'Celebrate');
+            } else {
+              this.$emit('isCorrectEvent', 'Failure');
+            }
+          }, 1800);
+        } else {
+          alert('Please guess a card and select it!');
+        }
+
       }
     }
   }
