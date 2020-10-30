@@ -1,12 +1,16 @@
 <template>
   <div class="card">
-    <img height="200" src="../assets/1.jpg">
+    <img height="200" :src="card.img">
   </div>
 </template>
 
 <script>
   export default {
-
+    props: {
+      card: {
+        type: Object,
+      }
+    }
   }
 </script>
 

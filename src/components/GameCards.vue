@@ -3,7 +3,7 @@
     <h1 class="title">Where is the <span>Limon</span><strong>?</strong></h1>
     <h4 class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
     <div class="container">
-      <card v-for="i in 5" :key="i"></card>
+      <card v-for="card in cards" :key="card.id" :card="card"></card>
     </div>
     <div class="container">
       <default-card></default-card>
@@ -19,6 +19,32 @@
     components: {
       Card,
       DefaultCard
+    },
+    data: () => {
+      return{
+        cards: [
+          {
+            id: 1,
+            component: "app-cards",
+            img: require('../assets/1.jpg')
+          },
+          {
+            id: 2,
+            component: "app-cards",
+            img: require('../assets/2.jpg')
+          },
+          {
+            id: 3,
+            component: "app-cards",
+            img: require('../assets/3.jpg')
+          },
+          {
+            id: 4,
+            component: "app-cards",
+            img: require('../assets/4.jpg')
+          }
+        ]
+      }
     }
   }
 </script>
