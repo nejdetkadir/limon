@@ -1,4 +1,9 @@
-# limon
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/90f57dcf5dcc44adae3cc096ee1fdc15)](https://www.codacy.com/gh/nejdetkadir/limon/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nejdetkadir/limon&amp;utm_campaign=Badge_Grade)
+
+# LİMON
+Simple guess application with VueJS for learning it
+
+![cover](doc/cover.jpg)
 
 ## Project setup
 ```
